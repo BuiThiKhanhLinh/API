@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    class Lop
+    public class Lop
     {
         public string MaLop  { get; set; }
         public string TenLop  { get; set; }

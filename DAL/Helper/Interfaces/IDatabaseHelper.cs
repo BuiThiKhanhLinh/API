@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 
-namespace DAL.Helper
+namespace DAL.Helper.Interfaces
 {
     public class StoreParameterInfo
     {
@@ -133,5 +133,4 @@ namespace DAL.Helper
         List<Object> ReturnValuesFromExecuteSProcedure(out string msgError, string sprocedureName, int outputParamCountNumber, params object[] paramObjects);
         #endregion 
     }
-
 }

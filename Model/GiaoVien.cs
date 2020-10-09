@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    class GiaoVien
+    public class GiaoVien
     {
         public string MaGV  { get; set; }
         public string MonDay { get; set; }

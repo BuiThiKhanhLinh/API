@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    class BaiViet
+    public class BaiViet
     {
         public string MaBaiViet { get; set; }
         public string TieuDe { get; set; }

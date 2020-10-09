@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    class BinhLuan
+    public class BinhLuan
     {
         public string MaBL  { get; set; }
         public string MaTK  { get; set; }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    class TKB
+    public class TKB
     {
         public string MaTKB  { get; set; }
         public string TenMon { get; set; }

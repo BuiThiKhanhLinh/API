@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    class HocSinh
+    public class HocSinh
     {
         public string MaHS  { get; set; }
         public string MaLop  { get; set; }

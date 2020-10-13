@@ -49,6 +49,8 @@ namespace API
             services.AddTransient<IHocSinhRepository, HocSinhRepository>();
             services.AddTransient<IDanhMucTinBusiness, DanhMucTinBusiness>();
             services.AddTransient<IDanhMucLoaiRepository, DanhMucLoaiRepository>();
+            services.AddTransient<ITKBBusiness, TKBBusiness>();
+            services.AddTransient<ITKBRepository, TKBRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

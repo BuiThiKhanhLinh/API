@@ -6,7 +6,7 @@ namespace Model
 {
     public class DanhMucTin
     {
-        public string MaLoai { get; set; }
+        public int MaLoai { get; set; }
         public string LoaiTin { get; set; }
     }
 }

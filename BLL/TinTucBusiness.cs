@@ -18,13 +18,21 @@ namespace BLL
         {
             return _res.Create(model);
         }
-        public TinTuc GetDatabyID(string id)
+        public TinTuc GetDatabyID(int id)
         {
             return _res.GetDatabyID(id);
         }
         public List<TinTuc> GetDataAll()
         {
             return _res.GetDataAll();
+        }
+        public List<TinTuc> GetDataLoai(int loai)
+        {
+            return _res.GetDataLoai(loai);
+        }
+        public List<TinTuc> GetDataTop3()
+        {
+            return _res.GetDataTop3();
         }
     }
 }

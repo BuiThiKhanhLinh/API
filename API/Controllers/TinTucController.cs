@@ -29,7 +29,7 @@ namespace API.Controllers
 
         [Route("get-by-id/{id}")]
         [HttpGet]
-        public TinTuc GetDatabyID(string id)
+        public TinTuc GetDatabyID(int id)
         {
             return _tintucBusiness.GetDatabyID(id);
         }
@@ -38,6 +38,18 @@ namespace API.Controllers
         public IEnumerable<TinTuc> GetDatabAll()
         {
             return _tintucBusiness.GetDataAll();
+        }
+        [Route("get-loai/{loai}")]
+        [HttpGet]
+        public IEnumerable<TinTuc> GetDatabLoai(int loai)
+        {
+            return _tintucBusiness.GetDataLoai(loai);
+        }
+        [Route("get-top3")]
+        [HttpGet]
+        public IEnumerable<TinTuc> GetDataTop3()
+        {
+            return _tintucBusiness.GetDataTop3();
         }
     }
 }

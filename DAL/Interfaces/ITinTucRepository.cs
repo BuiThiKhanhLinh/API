@@ -8,7 +8,9 @@ namespace DAL.Interfaces
     public partial interface ITinTucRepository 
     {
         bool Create(TinTuc model);
-        TinTuc GetDatabyID(string id);
+        TinTuc GetDatabyID(int id);
         List<TinTuc> GetDataAll();
+        List<TinTuc> GetDataLoai(int loai);
+        List<TinTuc> GetDataTop3();
     }
 }

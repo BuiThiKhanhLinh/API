@@ -43,7 +43,7 @@ namespace API
             services.AddTransient<IDatabaseHelper, DatabaseHelper>();
             services.AddTransient<ILopRepository, LopRepository>();
             services.AddTransient<ILopBusiness, LopBusiness>();
-            services.AddTransient<ITinTucRepository, TinTucRepository>();
+            services.AddTransient<ITinTucBusiness, TinTucBusiness>();
             services.AddTransient<ITinTucRepository, TinTucRepository>();
             services.AddTransient<IHocSinhBusiness, HocSinhBusiness>();
             services.AddTransient<IHocSinhRepository, HocSinhRepository>();
@@ -51,6 +51,8 @@ namespace API
             services.AddTransient<IDanhMucLoaiRepository, DanhMucLoaiRepository>();
             services.AddTransient<ITKBBusiness, TKBBusiness>();
             services.AddTransient<ITKBRepository, TKBRepository>();
+            services.AddTransient<IGiaoVienBusiness, GiaoVienBusiness>();
+            services.AddTransient<IGiaoVienRepository, GiaoVienRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

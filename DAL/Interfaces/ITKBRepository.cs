@@ -7,6 +7,7 @@ namespace DAL.Interfaces
 {
     public partial interface ITKBRepository 
     {
+        
         bool Create(TKB model);
         TKB GetDatabyID(string id);
         List<TKB> GetDataAll();

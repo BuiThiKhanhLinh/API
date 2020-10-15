@@ -15,5 +15,6 @@ namespace Model
         public string SDT { get; set; }
         public string Email { get; set; }
         public string PhanQuyen  { get; set; }
+        public string token { get; set; }
     }
 }

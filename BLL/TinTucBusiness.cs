@@ -34,5 +34,9 @@ namespace BLL
         {
             return _res.GetDataTop3();
         }
+        public List<TinTuc> Search(int pageIndex, int pageSize, out long total, string tieude)
+        {
+            return _res.Search(pageIndex, pageSize, out total, tieude);
+        }
     }
 }

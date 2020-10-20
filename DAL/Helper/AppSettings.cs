@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DAL.Helper
+namespace Helper
 {
-    class AppSettings
+    public class AppSettings
     {
         public string Secret { get; set; }
+
     }
 }

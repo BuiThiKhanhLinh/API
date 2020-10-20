@@ -26,5 +26,9 @@ namespace BLL
         {
             return _res.GetDataAll();
         }
+        public List<DanhMucTin> Search(int pageIndex, int pageSize, out long total, string noidung)
+        {
+            return _res.Search(pageIndex, pageSize, out total, noidung);
+        }
     }
 }

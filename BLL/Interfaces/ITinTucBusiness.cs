@@ -8,6 +8,8 @@ namespace BLL.Interfaces
     public partial interface ITinTucBusiness
     {
         bool Create(TinTuc model);
+        bool Update(TinTuc model);
+        bool Delete(int id);
         TinTuc GetDatabyID(int id);
         List<TinTuc> GetDataAll();
         List<TinTuc> GetDataLoai(int loai);

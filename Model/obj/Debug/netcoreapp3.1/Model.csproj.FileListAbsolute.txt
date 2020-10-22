@@ -4,6 +4,6 @@ D:\DoAn\DoAn-API\DoAn5\Model\bin\Debug\netcoreapp3.1\Model.pdb
 D:\DoAn\DoAn-API\DoAn5\Model\obj\Debug\netcoreapp3.1\Model.csprojAssemblyReference.cache
 D:\DoAn\DoAn-API\DoAn5\Model\obj\Debug\netcoreapp3.1\Model.AssemblyInfoInputs.cache
 D:\DoAn\DoAn-API\DoAn5\Model\obj\Debug\netcoreapp3.1\Model.AssemblyInfo.cs
-D:\DoAn\DoAn-API\DoAn5\Model\obj\Debug\netcoreapp3.1\Model.csproj.CoreCompileInputs.cache
 D:\DoAn\DoAn-API\DoAn5\Model\obj\Debug\netcoreapp3.1\Model.dll
 D:\DoAn\DoAn-API\DoAn5\Model\obj\Debug\netcoreapp3.1\Model.pdb
+D:\DoAn\DoAn-API\DoAn5\Model\obj\Debug\netcoreapp3.1\Model.csproj.CoreCompileInputs.cache

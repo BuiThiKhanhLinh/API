@@ -68,7 +68,7 @@ namespace API
                 };
             });
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddTransient<IDatabaseHelper, DatabaseHelper>();
             services.AddTransient<ILopRepository, LopRepository>();
             services.AddTransient<ILopBusiness, LopBusiness>();
@@ -84,6 +84,10 @@ namespace API
             services.AddTransient<IGiaoVienRepository, GiaoVienRepository>();
             services.AddTransient<ITaiKhoanBusiness, TaiKhoanBusiness>();
             services.AddTransient<ITaiKhoanRepository, TaiKhoanRepository>();
+            services.AddTransient<IBaiVietBusiness, BaiVietBusiness>();
+            services.AddTransient<IBaiVietRepository, BaiVietRepository>();
+            services.AddTransient<IBinhLuanBusiness, BinhLuanBusiness>();
+            services.AddTransient<IBinhLuanRepository, BinhLuanRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

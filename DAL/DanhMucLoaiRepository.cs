@@ -19,7 +19,59 @@ namespace DAL
         public bool Create(DanhMucTin model)
         {
             string msgError = "";
-            return true;
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "danh_muc_create",
+                "@MaLoai", model.MaLoai,
+                "@LoaiTin", model.LoaiTin);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool Delete(int id)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "danh_muc_delete",
+                "@MaLoai", id);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public bool Update(DanhMucTin model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "danh_muc_update",
+                "@MaLoai", model.MaLoai,
+                "@LoaiTin", model.LoaiTin);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public DanhMucTin GetDatabyID(string id)
         {
@@ -27,7 +79,7 @@ namespace DAL
             try
             {
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "danhmucloai_by_id",
-                     "@item_id", id);
+                     "@MaLoai", id);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<DanhMucTin>().FirstOrDefault();
@@ -52,16 +104,16 @@ namespace DAL
                 throw ex;
             }
         }
-        public List<DanhMucTin> Search(int pageIndex, int pageSize, out long total, string noidung)
+        public List<DanhMucTin> Search(int pageIndex, int pageSize, out long total, string loaitin)
         {
             string msgError = "";
             total = 0;
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "danhmuc_search",
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "danh_muc_search",
                     "@page_index", pageIndex,
                     "@page_size", pageSize,
-                    "@noidung", noidung);
+                    "@loaitin", loaitin);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];

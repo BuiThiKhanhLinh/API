@@ -6,7 +6,7 @@ D:\DoAn\DoAn-API\DoAn5\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfo.cs
 D:\DoAn\DoAn-API\DoAn5\DAL\bin\Debug\netcoreapp3.1\Model.dll
 D:\DoAn\DoAn-API\DoAn5\DAL\bin\Debug\netcoreapp3.1\DAL.pdb
 D:\DoAn\DoAn-API\DoAn5\DAL\bin\Debug\netcoreapp3.1\Model.pdb
-D:\DoAn\DoAn-API\DoAn5\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CoreCompileInputs.cache
 D:\DoAn\DoAn-API\DoAn5\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CopyComplete
 D:\DoAn\DoAn-API\DoAn5\DAL\obj\Debug\netcoreapp3.1\DAL.dll
 D:\DoAn\DoAn-API\DoAn5\DAL\obj\Debug\netcoreapp3.1\DAL.pdb
+D:\DoAn\DoAn-API\DoAn5\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CoreCompileInputs.cache

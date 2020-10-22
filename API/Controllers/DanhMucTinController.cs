@@ -19,11 +19,29 @@ namespace API.Controllers
             _danhmuctinBusiness = danhmuctinBusiness;
         }
 
-        [Route("create-danhmuctin")]
+
+        [Route("create-danhmuc")]
         [HttpPost]
-        public DanhMucTin CreateItem([FromBody] DanhMucTin model)
+        public DanhMucTin CreateTinTuc([FromBody] DanhMucTin model)
         {
             _danhmuctinBusiness.Create(model);
+            return model;
+        }
+        [Route("delete-danhmuc")]
+        [HttpPost]
+        public IActionResult DeleteTinTuc([FromBody] Dictionary<string, object> formData)
+        {
+            int MaLoai = 0;
+            if (formData.Keys.Contains("MaLoai") && !string.IsNullOrEmpty(Convert.ToString(formData["MaLoai"]))) { MaLoai = int.Parse(Convert.ToString(formData["MaLoai"])); }
+            _danhmuctinBusiness.Delete(MaLoai);
+            return Ok();
+        }
+
+        [Route("update-danhmuc")]
+        [HttpPost]
+        public DanhMucTin UpdateTinTuc([FromBody] DanhMucTin model)
+        {
+            _danhmuctinBusiness.Update(model);
             return model;
         }
 
@@ -48,10 +66,10 @@ namespace API.Controllers
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
-                string noidung = "";
-                if (formData.Keys.Contains("noidung") && !string.IsNullOrEmpty(Convert.ToString(formData["noidung"]))) { noidung = Convert.ToString(formData["noidung"]); }
+                string loaitin = "";
+                if (formData.Keys.Contains("loaitin") && !string.IsNullOrEmpty(Convert.ToString(formData["loaitin"]))) { loaitin = Convert.ToString(formData["loaitin"]); }
                 long total = 0;
-                var data = _danhmuctinBusiness.Search(page, pageSize, out total, noidung);
+                var data = _danhmuctinBusiness.Search(page, pageSize, out total, loaitin);
                 response.TotalItems = total;
                 response.Data = data;
                 response.Page = page;

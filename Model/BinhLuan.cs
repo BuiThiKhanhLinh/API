@@ -6,11 +6,11 @@ namespace Model
 {
     public class BinhLuan
     {
-        public string MaBL  { get; set; }
-        public string MaTK  { get; set; }
+        public int MaBL  { get; set; }
+        public int MaTK  { get; set; }
         public string ThoiGian { get; set; }
         public string NoiDung  { get; set; }
         public string TrangThai  { get; set; }
-        public string MaBaiViet  { get; set; }
+        public int MaBaiViet  { get; set; }
     }
 }

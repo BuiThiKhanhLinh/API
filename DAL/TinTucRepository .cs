@@ -19,7 +19,70 @@ namespace DAL
         public bool Create(TinTuc model)
         {
             string msgError = "";
-            return true;
+            try
+            {
+                //string thoigian = DateTime.Now.Year + "/" + DateTime.Now.Month + "/" + DateTime.Now.Day;
+                var test = model;
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "tin_tuc_create",
+                "@MaLoai", model.MaLoai,
+                "@TieuDe", model.TieuDe,
+                "@HinhAnh", model.HinhAnh,
+                "@NoiDung", model.NoiDung,
+                "@ThoiGian", model.ThoiGian,
+                "@TrangThai", model.TrangThai);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool Delete(int id)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "tin_tuc_delete",
+                "@MaTin", id);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public bool Update(TinTuc model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "tin_tuc_update",
+                "@MaTin", model.MaTin,
+                "@MaLoai", model.MaLoai,
+                "@TieuDe", model.TieuDe,
+                "@HinhAnh", model.HinhAnh,
+                "@NoiDung", model.NoiDung,
+                "@ThoiGian", model.ThoiGian,
+                "@TrangThai", model.TrangThai);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public TinTuc GetDatabyID(int id)
         {

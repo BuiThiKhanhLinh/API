@@ -6,12 +6,12 @@ namespace Model
 {
     public class BaiViet
     {
-        public string MaBaiViet { get; set; }
+        public int MaBaiViet { get; set; }
         public string TieuDe { get; set; }
         public string NoiDung { get; set; }
         public string HinhAnh { get; set; }
         public DateTime ThoiGian { get; set; }
         public string TrangThai { get; set; }
-        public string MaTK  { get; set; }
+        public int MaTK  { get; set; }
     }
 }

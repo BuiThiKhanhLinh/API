@@ -18,6 +18,14 @@ namespace BLL
         {
             return _res.Create(model);
         }
+        public bool Update(TinTuc model)
+        {
+            return _res.Update(model);
+        }
+        public bool Delete(int id)
+        {
+            return _res.Delete(id);
+        }
         public TinTuc GetDatabyID(int id)
         {
             return _res.GetDatabyID(id);

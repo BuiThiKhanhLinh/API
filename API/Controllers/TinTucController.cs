@@ -21,9 +21,26 @@ namespace API.Controllers
 
         [Route("create-tintuc")]
         [HttpPost]
-        public TinTuc CreateItem([FromBody] TinTuc model)
+        public TinTuc CreateTinTuc([FromBody] TinTuc model)
         {
             _tintucBusiness.Create(model);
+            return model;
+        }
+        [Route("delete-tintuc")]
+        [HttpPost]
+        public IActionResult DeleteTinTuc([FromBody] Dictionary<string, object> formData)
+        {
+            int MaTin=0;
+            if (formData.Keys.Contains("MaTin") && !string.IsNullOrEmpty(Convert.ToString(formData["MaTin"]))) { MaTin = int.Parse(Convert.ToString(formData["MaTin"])); }
+            _tintucBusiness.Delete(MaTin);
+            return Ok();
+        }
+
+        [Route("update-tintuc")]
+        [HttpPost]
+        public TinTuc UpdateTinTuc([FromBody] TinTuc model)
+        {
+            _tintucBusiness.Update(model);
             return model;
         }
 

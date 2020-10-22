@@ -6,8 +6,8 @@ namespace Model
 {
     public class TinTuc
     {
-        public string MaTin { get; set; }
-        public string MaLoai { get; set; }
+        public int MaTin { get; set; }
+        public int MaLoai { get; set; }
         public string TieuDe { get; set; }
         public string HinhAnh { get; set; }
         public string NoiDung { get; set; }

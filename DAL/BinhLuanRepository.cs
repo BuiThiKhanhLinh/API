@@ -129,7 +129,7 @@ namespace DAL
                 throw ex;
             }
         }
-        public List<BinhLuan> Search(int pageIndex, int pageSize, out long total)
+        public List<BinhLuan> Search(int pageIndex, int pageSize, out long total, int mabv)
         {
             string msgError = "";
             total = 0;
@@ -137,7 +137,8 @@ namespace DAL
             {
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "binh_luan_search",
                     "@page_index", pageIndex,
-                    "@page_size", pageSize);
+                    "@page_size", pageSize,
+                    "@mabv", mabv);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];

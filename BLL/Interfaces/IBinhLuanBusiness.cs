@@ -13,6 +13,6 @@ namespace BLL.Interfaces
         BinhLuan GetDatabyID(int id);
         List<BinhLuan> GetDataAll();
         List<BinhLuan> GetDataBaiViet(int id);
-        List<BinhLuan> Search(int pageIndex, int pageSize, out long total);
+        List<BinhLuan> Search(int pageIndex, int pageSize, out long total, int mabv);
     }
 }

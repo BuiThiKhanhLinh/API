@@ -23,7 +23,6 @@ namespace DAL
             {
                 string thoigian = DateTime.Now.Year + "/" + DateTime.Now.Month + "/" + DateTime.Now.Day;
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "bai_viet_create",
-                "@MaBaiViet", model.MaBaiViet,
                 "@TieuDe", model.TieuDe,
                 "@NoiDung", model.NoiDung,
                 "@HinhAnh", model.HinhAnh,

@@ -71,8 +71,10 @@ namespace API.Controllers
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
+                int mabv = 0;
+                if (formData.Keys.Contains("mabv") && !string.IsNullOrEmpty(Convert.ToString(formData["mabv"]))) { mabv = int.Parse(Convert.ToString(formData["mabv"])); }
                 long total = 0;
-                var data = _binhluanBusiness.Search(page, pageSize, out total);
+                var data = _binhluanBusiness.Search(page, pageSize, out total, mabv);
                 response.TotalItems = total;
                 response.Data = data;
                 response.Page = page;

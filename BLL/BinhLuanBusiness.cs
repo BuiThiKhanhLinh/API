@@ -38,9 +38,9 @@ namespace BLL
         {
             return _res.GetDataBaiViet(id);
         }
-        public List<BinhLuan> Search(int pageIndex, int pageSize, out long total)
+        public List<BinhLuan> Search(int pageIndex, int pageSize, out long total, int mabv)
         {
-            return _res.Search(pageIndex, pageSize, out total);
+            return _res.Search(pageIndex, pageSize, out total, mabv);
         }
     }
 }

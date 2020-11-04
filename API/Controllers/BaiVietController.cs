@@ -31,7 +31,7 @@ namespace API.Controllers
         public IActionResult DeleteBaiViet([FromBody] Dictionary<string, object> formData)
         {
             int MaBaiViet = 0;
-            if (formData.Keys.Contains("MaBaiViet") && !string.IsNullOrEmpty(Convert.ToString(formData["MaBaiViet"]))) { MaBaiViet = int.Parse(Convert.ToString(formData["MaBaiViet"])); }
+            if (formData.Keys.Contains("maBaiViet") && !string.IsNullOrEmpty(Convert.ToString(formData["maBaiViet"]))) { MaBaiViet = int.Parse(Convert.ToString(formData["maBaiViet"])); }
             _baivietBusiness.Delete(MaBaiViet);
             return Ok();
         }

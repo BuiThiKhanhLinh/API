@@ -8,5 +8,6 @@ namespace Model
     {
         public string MaLop  { get; set; }
         public string TenLop  { get; set; }
+        public string SiSo { get; set; }
     }
 }

@@ -19,7 +19,73 @@ namespace DAL
         public bool Create(TaiKhoan model)
         {
             string msgError = "";
-            return true;
+            try
+            {
+                //string thoigian = DateTime.Now.Year + "/" + DateTime.Now.Month + "/" + DateTime.Now.Day;
+                var test = model;
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "taikhoan_create",
+                "@Username", model.Username,
+                "@Password", model.Password,
+                "@HoTen", model.HoTen,
+                "@NgaySinh", model.NgaySinh,
+                "@DiaChi", model.DiaChi,
+                "@SDT", model.SDT,
+                "@Email", model.Email,
+                "@PhanQuyen", model.PhanQuyen);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public bool Delete(int id)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "taikhoan_delete",
+                "@MaTK", id);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public bool Update(TaiKhoan model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "taikhoan_update",
+               "@MaTK", model.MaTK,
+               "@Username", model.Username,
+                "@Password", model.Password,
+                "@HoTen", model.HoTen,
+                "@NgaySinh", model.NgaySinh,
+                "@DiaChi", model.DiaChi,
+                "@SDT", model.SDT,
+                "@Email", model.Email,
+                "@PhanQuyen", model.PhanQuyen);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public TaiKhoan GetDatabyID(string id)
         {
@@ -70,6 +136,26 @@ namespace DAL
             }
         }
 
-
+        public List<TaiKhoan> Search(int pageIndex, int pageSize, out long total, string username, string hoten)
+        {
+            string msgError = "";
+            total = 0;
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "taikhoan_search",
+                    "@page_index", pageIndex,
+                    "@page_size", pageSize,
+                    "@hoten", hoten,
+                    "@username", username);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
+                return dt.ConvertTo<TaiKhoan>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

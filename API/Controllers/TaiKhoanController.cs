@@ -64,9 +64,26 @@ namespace API.Controllers
 
         [Route("create-taikhoan")]
         [HttpPost]
-        public TaiKhoan CreateItem([FromBody] TaiKhoan model)
+        public TaiKhoan CreateTaiKhoan([FromBody] TaiKhoan model)
         {
             _taikhoanBusiness.Create(model);
+            return model;
+        }
+        [Route("delete-taikhoan")]
+        [HttpPost]
+        public IActionResult DeleteTaiKhoan([FromBody] Dictionary<string, object> formData)
+        {
+            int MaTK = 0;
+            if (formData.Keys.Contains("MaTK") && !string.IsNullOrEmpty(Convert.ToString(formData["MaTK"]))) { MaTK = int.Parse(Convert.ToString(formData["MaTK"])); }
+            _taikhoanBusiness.Delete(MaTK);
+            return Ok();
+        }
+
+        [Route("update-taikhoan")]
+        [HttpPost]
+        public TaiKhoan UpdateTaiKhoan([FromBody] TaiKhoan model)
+        {
+            _taikhoanBusiness.Update(model);
             return model;
         }
 
@@ -81,6 +98,32 @@ namespace API.Controllers
         public IEnumerable<TaiKhoan> GetDatabAll()
         {
             return _taikhoanBusiness.GetDataAll();
+        }
+        [Route("search")]
+        [HttpPost]
+        public ResponseModel Search([FromBody] Dictionary<string, object> formData)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                var page = int.Parse(formData["page"].ToString());
+                var pageSize = int.Parse(formData["pageSize"].ToString());
+                string username = "";
+                if (formData.Keys.Contains("username") && !string.IsNullOrEmpty(Convert.ToString(formData["username"]))) { username = Convert.ToString(formData["username"]); }
+                long total = 0;
+                if (formData.Keys.Contains("hoten") && !string.IsNullOrEmpty(Convert.ToString(formData["username"]))) { username = Convert.ToString(formData["hoten"]); }
+                string hoten = "";
+                var data = _taikhoanBusiness.Search(page, pageSize, out total, username, hoten);
+                response.TotalItems = total;
+                response.Data = data;
+                response.Page = page;
+                response.PageSize = pageSize;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return response;
         }
     }
 }

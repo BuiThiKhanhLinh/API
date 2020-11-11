@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BLL
 {
-    public partial class GiaoVienBusiness: IGiaoVienBusiness
+    public partial class GiaoVienBusiness : IGiaoVienBusiness
     {
         private IGiaoVienRepository _res;
         public GiaoVienBusiness(IGiaoVienRepository GiaoViengroup)
@@ -18,6 +18,14 @@ namespace BLL
         {
             return _res.Create(model);
         }
+        public bool Update(GiaoVien model)
+        {
+            return _res.Update(model);
+        }
+        public bool Delete(int id)
+        {
+            return _res.Delete(id);
+        }
         public GiaoVien GetDatabyID(string id)
         {
             return _res.GetDatabyID(id);
@@ -25,6 +33,10 @@ namespace BLL
         public List<GiaoVien> GetDataAll()
         {
             return _res.GetDataAll();
+        }
+        public List<GiaoVien> Search(int pageIndex, int pageSize, out long total, string hoten)
+        {
+            return _res.Search(pageIndex, pageSize, out total, hoten);
         }
     }
 }

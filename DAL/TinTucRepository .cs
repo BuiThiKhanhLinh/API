@@ -21,7 +21,6 @@ namespace DAL
             string msgError = "";
             try
             {
-                //string thoigian = DateTime.Now.Year + "/" + DateTime.Now.Month + "/" + DateTime.Now.Day;
                 var test = model;
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "tin_tuc_create",
                 "@MaLoai", model.MaLoai,

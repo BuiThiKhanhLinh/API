@@ -14,5 +14,6 @@ namespace Model
         public string DiaChi  { get; set; }
         public string SDT  { get; set; }
         public string ChucVu  { get; set; }
+        public string MaLop { get; set; }
     }
 }

@@ -50,6 +50,14 @@ namespace BLL
         {
             return _res.Create(model);
         }
+        public bool Update(TaiKhoan model)
+        {
+            return _res.Update(model);
+        }
+        public bool Delete(int id)
+        {
+            return _res.Delete(id);
+        }
         public TaiKhoan GetDatabyID(string id)
         {
             return _res.GetDatabyID(id);
@@ -57,6 +65,10 @@ namespace BLL
         public List<TaiKhoan> GetDataAll()
         {
             return _res.GetDataAll();
+        }
+        public List<TaiKhoan> Search(int pageIndex, int pageSize, out long total, string username, string hoten)
+        {
+            return _res.Search(pageIndex, pageSize, out total, username, hoten);
         }
     }
 }

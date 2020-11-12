@@ -21,7 +21,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var test = model;
+               
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "giaovien_create",
                 "@MonDay", model.MonDay,
                 "@ToDay", model.ToDay,
@@ -66,6 +66,7 @@ namespace DAL
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "giaovien_update",
+                 "@MaGV", model.MaGV,
                 "@MonDay", model.MonDay,
                 "@ToDay", model.ToDay,
                 "@HoTen", model.HoTen,
@@ -91,7 +92,7 @@ namespace DAL
             try
             {
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "giaovien_by_id",
-                     "@item_id", id);
+                     "@item_MaGV", id);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<GiaoVien>().FirstOrDefault();

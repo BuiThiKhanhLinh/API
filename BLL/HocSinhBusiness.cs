@@ -18,6 +18,14 @@ namespace BLL
         {
             return _res.Create(model);
         }
+        public bool Update(HocSinh model)
+        {
+            return _res.Update(model);
+        }
+        public bool Delete(int id)
+        {
+            return _res.Delete(id);
+        }
         public HocSinh GetDatabyID(string id)
         {
             return _res.GetDatabyID(id);
@@ -25,6 +33,10 @@ namespace BLL
         public List<HocSinh> GetDataAll()
         {
             return _res.GetDataAll();
+        }
+        public List<HocSinh> Search(int pageIndex, int pageSize, out long total, string hoten)
+        {
+            return _res.Search(pageIndex, pageSize, out total, hoten);
         }
     }
 }

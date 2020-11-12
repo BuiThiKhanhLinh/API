@@ -38,7 +38,7 @@ namespace API.Controllers
 
         [Route("update-giaovien")]
         [HttpPost]
-        public GiaoVien UpdateGIaoVien([FromBody] GiaoVien model)
+        public GiaoVien UpdateGiaoVien ([FromBody] GiaoVien model)
         {
             _giaovienBusiness.Update(model);
             return model;

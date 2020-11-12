@@ -19,7 +19,62 @@ namespace DAL
         public bool Create(Lop model)
         {
             string msgError = "";
-            return true;
+            try
+            {
+
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "lop_create",
+                "@MaLop", model.MaLop,
+                "@TenLop", model.TenLop,
+                "@SiSo", model.SiSo);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public bool Delete(int id)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "lop_delete",
+                "@MaLop", id);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public bool Update(Lop model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "lop_update",
+                
+                "@MaLop", model.MaLop,
+                 "@TenLop", model.TenLop,
+                "@SiSo", model.SiSo);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public Lop GetDatabyID(string id)
         {
@@ -45,6 +100,26 @@ namespace DAL
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "lop_all");
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
+                return dt.ConvertTo<Lop>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<Lop> Search(int pageIndex, int pageSize, out long total, string tenlop )
+        {
+            string msgError = "";
+            total = 0;
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "lop_search",
+                    "@page_index", pageIndex,
+                    "@page_size", pageSize,
+                    "@tenlop", tenlop);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
                 return dt.ConvertTo<Lop>().ToList();
             }
             catch (Exception ex)

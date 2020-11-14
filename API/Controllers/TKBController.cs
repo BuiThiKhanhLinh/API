@@ -19,11 +19,28 @@ namespace API.Controllers
             _tkbBusiness = tkbBusiness;
         }
 
-        [Route("create-hocsinh")]
+        [Route("create-tkb")]
         [HttpPost]
-        public TKB CreateItem([FromBody] TKB model)
+        public TKB CreateTKB([FromBody] TKB model)
         {
             _tkbBusiness.Create(model);
+            return model;
+        }
+        [Route("delete-tkb")]
+        [HttpPost]
+        public IActionResult DeleteTKB([FromBody] Dictionary<string, object> formData)
+        {
+            int MaTKB = 0;
+            if (formData.Keys.Contains("MaTKB") && !string.IsNullOrEmpty(Convert.ToString(formData["MaTKB"]))) { MaTKB = int.Parse(Convert.ToString(formData["MaTKB"])); }
+            _tkbBusiness.Delete(MaTKB);
+            return Ok();
+        }
+
+        [Route("update-tkb")]
+        [HttpPost]
+        public TKB UpdateTKB([FromBody] TKB model)
+        {
+            _tkbBusiness.Update(model);
             return model;
         }
 
@@ -38,6 +55,36 @@ namespace API.Controllers
         public IEnumerable<TKB> GetDatabAll()
         {
             return _tkbBusiness.GetDataAll();
+        }
+        [Route("get-by-lop/{MaLop}")]
+        [HttpGet]
+        public IEnumerable<TKB> GetDataLop(string MaLop)
+        {
+            return _tkbBusiness.GetDataLop(MaLop);
+        }
+        [Route("search")]
+        [HttpPost]
+        public ResponseModel Search([FromBody] Dictionary<string, object> formData)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                var page = int.Parse(formData["page"].ToString());
+                var pageSize = int.Parse(formData["pageSize"].ToString());
+                string malop = "";
+                if (formData.Keys.Contains("malop") && !string.IsNullOrEmpty(Convert.ToString(formData["malop"]))) { malop = Convert.ToString(formData["malop"]); }
+                long total = 0;
+                var data = _tkbBusiness.Search(page, pageSize, out total, malop);
+                response.TotalItems = total;
+                response.Data = data;
+                response.Page = page;
+                response.PageSize = pageSize;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return response;
         }
     }
 }

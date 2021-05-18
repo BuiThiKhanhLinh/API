@@ -23,8 +23,9 @@ namespace DAL
             {
                 string thoigian = DateTime.Now.Year + "/" + DateTime.Now.Month + "/" + DateTime.Now.Day;
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "binh_luan_create",
-                "@MaBL", model.MaBL,
-                "@MaTK", model.MaTK,
+                "@MaTK",model.MaTK,
+                "@Username", model.Username,
+                "@HoTen", model.HoTen,
                 "@ThoiGian", thoigian,
                 "@NoiDung", model.NoiDung,
                 "@TrangThai", model.TrangThai,
@@ -67,6 +68,8 @@ namespace DAL
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "binh_luan_update",
                 "@MaBL", model.MaBL,
                 "@MaTK", model.MaTK,
+                 "@Username", model.Username,
+                 "@HoTen", model.HoTen,
                 "@ThoiGian", model.ThoiGian,
                 "@NoiDung", model.NoiDung,
                 "@TrangThai", model.TrangThai,

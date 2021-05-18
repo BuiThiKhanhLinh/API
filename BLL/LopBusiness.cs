@@ -21,7 +21,7 @@ namespace BLL
         {
             return _res.Update(model);
         }
-        public bool Delete(int id)
+        public bool Delete(string id)
         {
             return _res.Delete(id);
         }

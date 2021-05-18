@@ -37,7 +37,7 @@ namespace DAL
                 throw ex;
             }
         }
-        public bool Delete(int id)
+        public bool Delete(string id)
         {
             string msgError = "";
             try
@@ -60,8 +60,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "lop_update",
-                
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "lop_update",               
                 "@MaLop", model.MaLop,
                  "@TenLop", model.TenLop,
                 "@SiSo", model.SiSo);
@@ -82,7 +81,7 @@ namespace DAL
             try
             {
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "lop_by_id",
-                     "@item_id", id);
+                     "@item_MaLop", id);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<Lop>().FirstOrDefault();

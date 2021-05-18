@@ -13,5 +13,6 @@ namespace Model
         public DateTime ThoiGian { get; set; }
         public string TrangThai { get; set; }
         public int MaTK  { get; set; }
+        public int SoBL { get; set; }
     }
 }

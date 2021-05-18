@@ -31,14 +31,14 @@ namespace API.Controllers
         public IActionResult DeleteBinhLuan([FromBody] Dictionary<string, object> formData)
         {
             int MaBL = 0;
-            if (formData.Keys.Contains("MaBL") && !string.IsNullOrEmpty(Convert.ToString(formData["MaTin"]))) { MaBL = int.Parse(Convert.ToString(formData["MaBL"])); }
+            if (formData.Keys.Contains("MaBL") && !string.IsNullOrEmpty(Convert.ToString(formData["MaBL"]))) { MaBL = int.Parse(Convert.ToString(formData["MaBL"])); }
             _binhluanBusiness.Delete(MaBL);
             return Ok();
         }
 
-        [Route("update-tintuc")]
+        [Route("update-binhluan")]
         [HttpPost]
-        public BinhLuan UpdateTinTuc([FromBody] BinhLuan model)
+        public BinhLuan UpdateBinhLuan ([FromBody] BinhLuan model)
         {
             _binhluanBusiness.Update(model);
             return model;

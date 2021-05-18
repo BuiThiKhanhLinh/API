@@ -66,6 +66,7 @@ namespace API.Controllers
         [HttpPost]
         public TaiKhoan CreateTaiKhoan([FromBody] TaiKhoan model)
         {
+            model.NgaySinh = model.NgaySinh.AddDays(1);
             _taikhoanBusiness.Create(model);
             return model;
         }
@@ -83,6 +84,7 @@ namespace API.Controllers
         [HttpPost]
         public TaiKhoan UpdateTaiKhoan([FromBody] TaiKhoan model)
         {
+            model.NgaySinh = model.NgaySinh.AddDays(1);
             _taikhoanBusiness.Update(model);
             return model;
         }
@@ -111,7 +113,7 @@ namespace API.Controllers
                 string username = "";
                 if (formData.Keys.Contains("username") && !string.IsNullOrEmpty(Convert.ToString(formData["username"]))) { username = Convert.ToString(formData["username"]); }
                 long total = 0;
-                if (formData.Keys.Contains("hoten") && !string.IsNullOrEmpty(Convert.ToString(formData["username"]))) { username = Convert.ToString(formData["hoten"]); }
+                if (formData.Keys.Contains("hoten") && !string.IsNullOrEmpty(Convert.ToString(formData["hoten"]))) { username = Convert.ToString(formData["hoten"]); }
                 string hoten = "";
                 var data = _taikhoanBusiness.Search(page, pageSize, out total, username, hoten);
                 response.TotalItems = total;

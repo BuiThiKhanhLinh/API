@@ -86,8 +86,8 @@ namespace DAL
             string msgError = "";
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "tkb_by_id",
-                     "@item_id", id);
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "tkb_by_lop",
+                     "@MaLop", id);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<TKB>().FirstOrDefault();

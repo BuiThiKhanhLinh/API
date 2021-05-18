@@ -22,7 +22,7 @@ namespace API.Controllers
 
         [Route("create-lop")]
         [HttpPost]
-        public Lop CreateHocSinh([FromBody] Lop model)
+        public Lop CreateLop([FromBody] Lop model)
         {
             _lopBusiness.Create(model);
             return model;
@@ -31,9 +31,12 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult DeleteLop([FromBody] Dictionary<string, object> formData)
         {
-            int MaHS = 0;
-            if (formData.Keys.Contains("MaLop") && !string.IsNullOrEmpty(Convert.ToString(formData["MaLop"]))) { MaHS = int.Parse(Convert.ToString(formData["MaLop"])); }
-            _lopBusiness.Delete(MaHS);
+            string MaLop = "";
+            if (formData.Keys.Contains("MaLop") && !string.IsNullOrEmpty(Convert.ToString(formData["MaLop"])))
+            {
+                MaLop = Convert.ToString(formData["MaLop"]);
+            }
+            _lopBusiness.Delete(MaLop);
             return Ok();
         }
 

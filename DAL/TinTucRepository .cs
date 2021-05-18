@@ -21,13 +21,13 @@ namespace DAL
             string msgError = "";
             try
             {
-                var test = model;
+                string thoigian = DateTime.Now.Year + "/" + DateTime.Now.Month + "/" + DateTime.Now.Day;
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "tin_tuc_create",
                 "@MaLoai", model.MaLoai,
                 "@TieuDe", model.TieuDe,
                 "@HinhAnh", model.HinhAnh,
                 "@NoiDung", model.NoiDung,
-                "@ThoiGian", model.ThoiGian,
+                "@ThoiGian", thoigian,
                 "@TrangThai", model.TrangThai);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {

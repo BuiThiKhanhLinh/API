@@ -42,9 +42,9 @@ namespace BLL
         {
             return _res.GetDataTop3();
         }
-        public List<TinTuc> Search(int pageIndex, int pageSize, out long total, string tieude)
+        public List<TinTuc> Search(int pageIndex, int pageSize, out long total, string tieude, string maloai, string trangthai)
         {
-            return _res.Search(pageIndex, pageSize, out total, tieude);
+            return _res.Search(pageIndex, pageSize, out total, tieude, maloai, trangthai);
         }
     }
 }

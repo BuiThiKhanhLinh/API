@@ -38,9 +38,9 @@ namespace BLL
         {
             return _res.GetDataTopBaiViet();
         }
-        public List<BaiViet> Search(int pageIndex, int pageSize, out long total, string tieude)
+        public List<BaiViet> Search(int pageIndex, int pageSize, out long total, string tieude, string taikhoan, string trangthai)
         {
-            return _res.Search(pageIndex, pageSize, out total, tieude);
+            return _res.Search(pageIndex, pageSize, out total, tieude, taikhoan, trangthai);
         }
     }
 }

@@ -73,9 +73,13 @@ namespace API.Controllers
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
                 string tieude = "";
+                string trangthai = "";
+                string taikhoan = null;
                 if (formData.Keys.Contains("tieude") && !string.IsNullOrEmpty(Convert.ToString(formData["tieude"]))) { tieude = Convert.ToString(formData["tieude"]); }
+                if (formData.Keys.Contains("trangthai") && !string.IsNullOrEmpty(Convert.ToString(formData["trangthai"]))) { trangthai = Convert.ToString(formData["trangthai"]); }
+                if (formData.Keys.Contains("taikhoan") && !string.IsNullOrEmpty(Convert.ToString(formData["taikhoan"]))) { taikhoan = Convert.ToString(formData["taikhoan"]); }
                 long total = 0;
-                var data = _baivietBusiness.Search(page, pageSize, out total, tieude);
+                var data = _baivietBusiness.Search(page, pageSize, out total, tieude, taikhoan, trangthai);
                 response.TotalItems = total;
                 response.Data = data;
                 response.Page = page;

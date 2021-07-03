@@ -13,6 +13,6 @@ namespace DAL.Interfaces
         BaiViet GetDatabyID(int id);
         List<BaiViet> GetDataAll();
         List<TopBaiViet> GetDataTopBaiViet();
-        List<BaiViet> Search(int pageIndex, int pageSize, out long total, string tieude);
+        List<BaiViet> Search(int pageIndex, int pageSize, out long total, string tieude, string taikhoan, string trangthai);
     }
 }

@@ -144,7 +144,7 @@ namespace DAL
                 throw ex;
             }
         }
-        public List<TinTuc> Search(int pageIndex, int pageSize, out long total, string tieude)
+        public List<TinTuc> Search(int pageIndex, int pageSize, out long total, string tieude, string maloai, string trangthai)
         {
             string msgError = "";
             total = 0;
@@ -153,7 +153,19 @@ namespace DAL
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "tin_tuc_search",
                     "@page_index", pageIndex,
                     "@page_size", pageSize,
-                    "@tieude", tieude);
+                    "@tieude", tieude,
+                    "@maloai", null,
+                    "@trangthai", trangthai);
+                if (!string.IsNullOrEmpty(maloai))
+                {
+                    int ml = int.Parse(maloai.ToString());
+                    dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "tin_tuc_search",
+                    "@page_index", pageIndex,
+                    "@page_size", pageSize,
+                    "@tieude", tieude,
+                    "@maloai", ml,
+                    "@trangthai", trangthai);
+                }
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];

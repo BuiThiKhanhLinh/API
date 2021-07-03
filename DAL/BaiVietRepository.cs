@@ -129,16 +129,29 @@ namespace DAL
                 throw ex;
             }
         }
-        public List<BaiViet> Search(int pageIndex, int pageSize, out long total, string tieude)
+        public List<BaiViet> Search(int pageIndex, int pageSize, out long total, string tieude, string taikhoan, string trangthai)
         {
             string msgError = "";
             total = 0;
             try
             {
+
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "bai_viet_search",
                     "@page_index", pageIndex,
                     "@page_size", pageSize,
-                    "@tieude", tieude);
+                    "@tieude", tieude,
+                    "@taikhoan", null,
+                    "@trangthai", trangthai);
+                if (!string.IsNullOrEmpty(taikhoan))
+                {
+                    int tk = int.Parse(taikhoan.ToString());
+                    dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "bai_viet_search",
+                    "@page_index", pageIndex,
+                    "@page_size", pageSize,
+                    "@tieude", tieude,
+                    "@taikhoan", tk,
+                    "@trangthai", trangthai);
+                }
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];

@@ -14,6 +14,6 @@ namespace DAL.Interfaces
         List<TinTuc> GetDataAll();
         List<TinTuc> GetDataLoai(int loai);
         List<TinTuc> GetDataTop3();
-        List<TinTuc> Search(int pageIndex, int pageSize, out long total, string hoten);
+        List<TinTuc> Search(int pageIndex, int pageSize, out long total, string tieude, string maloai, string trangthai);
     }
 }

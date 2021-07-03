@@ -78,10 +78,14 @@ namespace API.Controllers
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
+                string maloai = null;
                 string tieude = "";
+                string trangthai = "";
                 if (formData.Keys.Contains("tieude") && !string.IsNullOrEmpty(Convert.ToString(formData["tieude"]))) { tieude = Convert.ToString(formData["tieude"]); }
+                if (formData.Keys.Contains("trangthai") && !string.IsNullOrEmpty(Convert.ToString(formData["trangthai"]))) { trangthai = Convert.ToString(formData["trangthai"]); }
+                if (formData.Keys.Contains("maloai") && !string.IsNullOrEmpty(Convert.ToString(formData["maloai"]))) { maloai = Convert.ToString(formData["maloai"]); }
                 long total = 0;
-                var data = _tintucBusiness.Search(page, pageSize, out total, tieude);
+                var data = _tintucBusiness.Search(page, pageSize, out total, tieude, maloai, trangthai);
                 response.TotalItems = total;
                 response.Data = data;
                 response.Page = page;
